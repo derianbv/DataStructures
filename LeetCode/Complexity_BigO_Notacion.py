@@ -43,7 +43,7 @@ La complejidad Big O se basa en un estudio asintotico, es decir para entradas mu
 ''''
 
 # Operaciones de tiempo constante O(1) en Python
-# Incluye notas sobre si la complejidad podría cambiar en otros lenguajes como C++.
+
 
 # 1. Asignación
 a = 1  # O(1), también O(1) en C++.
