@@ -42,7 +42,7 @@ La complejidad Big O se basa en un estudio asintotico, es decir para entradas mu
 
 ''''
 
-# Operaciones de tiempo constante O(1) en Python
+# Operaciones de tiempo constante O(1) en Python ------------------------------------------------------------------------------------
 
 
 # 1. Asignación
@@ -114,4 +114,88 @@ c = a + b  # O(1) para números pequeños. En Python, puede ser O(k) donde k es 
 d = a * b  # O(1) para números pequeños. En Python, puede ser O(k) para enteros grandes.
 # En C++, también O(1) para enteros de tamaño fijo.
 
+
+
+
+
+
+
+# Operaciones de tiempo lineal O(n) en Python ----------------------------------------------------------------------------------------------------------------
+
+
+# 1. Recorrido de una lista, tupla, conjunto o diccionario
+# Recorrer una lista
+for elemento in lista:  # O(n), también O(n) en C++ para std::vector.
+
+# Recorrer una tupla
+for elemento in tupla:  # O(n), también O(n) en C++ para std::array.
+
+# Recorrer un conjunto
+for elemento in conjunto:  # O(n), también O(n) en C++ para std::unordered_set.
+
+# Recorrer las claves de un diccionario
+for clave in diccionario:  # O(n), también O(n) en C++ para std::unordered_map.
+
+# 2. Búsqueda en listas
+elemento in lista  # O(n), en C++ (std::vector) también es O(n).
+# Nota: En C++, si usas std::set, esto sería O(log n).
+
+# 3. Concatenación de listas
+lista_concatenada = lista1 + lista2  # O(n + m), donde n y m son los tamaños de las listas.
+# En C++, concatenar dos std::vectors toma O(n + m).
+
+# 4. Clonado o copia de listas, tuplas o conjuntos
+lista_copiada = lista[:]  # O(n), también O(n) en C++ al copiar un std::vector.
+
+tupla_copiada = tupla[:]  # O(n), también O(n) en C++ al copiar un std::array.
+
+conjunto_copiado = conjunto.copy()  # O(n), también O(n) en C++ al copiar un std::unordered_set.
+
+# 5. Conversión de estructuras
+# Convertir una lista a un conjunto
+conjunto = set(lista)  # O(n), también O(n) en C++ para construir un std::unordered_set desde un contenedor.
+
+# Convertir un conjunto a una lista
+lista = list(conjunto)  # O(n), también O(n) en C++ al convertir un std::unordered_set a un std::vector.
+
+# Convertir un diccionario a una lista de claves
+lista_claves = list(diccionario.keys())  # O(n), también O(n) en C++ al usar std::unordered_map::keys().
+
+# 6. Comparación de listas o cadenas
+lista1 == lista2  # O(n), porque compara elemento por elemento.
+# En C++, también es O(n) para std::vector y std::string.
+
+cadena1 == cadena2  # O(n), también O(n) en C++ para std::string.
+
+# 7. Eliminación de un elemento por valor en una lista
+lista.remove(valor)  # O(n), porque busca el elemento antes de eliminarlo.
+# En C++, std::vector::erase() combinado con std::find es también O(n).
+
+# 8. Buscar un valor mínimo o máximo
+minimo = min(lista)  # O(n), porque recorre todos los elementos.
+# En C++, std::min_element para std::vector es también O(n).
+
+maximo = max(lista)  # O(n), en C++ std::max_element para std::vector es también O(n).
+
+# 9. Extender una lista con otra lista
+lista1.extend(lista2)  # O(n + m), donde n es el tamaño de lista1 y m el tamaño de lista2.
+# En C++, std::vector::insert() para extender un vector también toma O(n + m).
+
+# 10. Comprobación de igualdad para diccionarios
+diccionario1 == diccionario2  # O(n), porque compara las claves y valores.
+# En C++, comparar dos std::unordered_map es también O(n).
+
+# 11. Suma de elementos en una lista o conjunto
+suma = sum(lista)  # O(n), porque recorre todos los elementos.
+# En C++, usar std::accumulate para sumar elementos en std::vector es también O(n).
+
+suma = sum(conjunto)  # O(n), también O(n) en C++ al sumar elementos de un std::unordered_set.
+
+# 12. Reversión de una lista
+lista_reversa = lista[::-1]  # O(n), porque crea una copia en orden inverso.
+# En C++, usar std::reverse para un std::vector también toma O(n).
+
+# 13. Creación de una lista por comprensión
+lista_nueva = [x * 2 for x in lista]  # O(n), porque recorre todos los elementos.
+# En C++, un equivalente sería usar std::transform en un std::vector, que también es O(n).
 
