@@ -21,7 +21,7 @@ s
 4. O(n*Log_2(n)) =   10 datos => O(10*Log_2(10)): 33.21 operaciones. 
 5. O(n) =   10 datos => O(10): 10 operaciones. 
 6. O(log_2(n)) =   10 datos => O(Log_2(10)):  3.21 operaciones. 
-7. O 
+7. O(1) =   10 datos => O(1): 1 operación.  
 
 
 
