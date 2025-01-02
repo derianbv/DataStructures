@@ -12,5 +12,14 @@ n generalmente representa el número de elementos en una lista, cadena, árbol, 
 O(n) se encarga de medir el peor de los casos, por ejemplo, si quiero buscar un elemento en una lista no ordenada de n elementos 
 es posible que en el peor de los casos tenga que hacer n operaciones para encontrar el número 
 
+Tabla de complejidad: 
+Por ejemplo, tengo un arreglo de n= 10 elementos, así se demorará el algoritmo en funcionar: 
+
+1. 0(n!) => 10 datos y O(10!): 3628800 operaciones.
+2. 0(2^n) => 10 datos y O(2^10): 1024 operaciones.
+3. O(n) => 10 datos y O(10): 10 operaciones. 
+
+
+
 
 ''''
