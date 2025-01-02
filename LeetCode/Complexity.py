@@ -14,7 +14,7 @@ es posible que en el peor de los casos tenga que hacer n operaciones para encont
 
 ---------------------- Tabla de complejidad: ---------------------------------------------------------------- 
 Por ejemplo, tengo un arreglo de n= 10 elementos, así se demorará el algoritmo en funcionar: 
-s
+
 1. 0(n!) =   10 datos => O(10!): 3628800 operaciones.
 2. 0(2^n) =   10 datos => O(2^10): 1024 operaciones.
 3. 0(n^2) =   10 datos => O(10^2): 100 operaciones.
