@@ -199,3 +199,185 @@ lista_reversa = lista[::-1]  # O(n), porque crea una copia en orden inverso.
 lista_nueva = [x * 2 for x in lista]  # O(n), porque recorre todos los elementos.
 # En C++, un equivalente sería usar std::transform en un std::vector, que también es O(n).
 
+
+
+
+
+# Operaciones de tiempo logarítmico O(log n) en Python ------------------------------------------------------------------------------------------
+
+
+# 1. Operaciones con estructuras de datos ordenadas (bisect)
+import bisect
+
+# Inserción en una lista ordenada usando bisect
+bisect.insort(lista_ordenada, valor)  # O(log n)
+# Es así porque Python implementa búsqueda binaria para encontrar la posición correcta antes de insertar.
+# En C++, std::set::insert o std::map::insert también son O(log n) porque usan árboles balanceados.
+
+# Búsqueda de la posición donde se puede insertar un valor en una lista ordenada
+pos = bisect.bisect(lista_ordenada, valor)  # O(log n)
+# Python usa búsqueda binaria internamente para determinar el índice.
+# En C++, std::lower_bound en std::vector o std::set también toma O(log n).
+
+# 2. Operaciones con conjuntos o diccionarios ordenados (sortedcontainers)
+from sortedcontainers import SortedSet, SortedDict
+
+conjunto_ordenado = SortedSet([1, 2, 3, 4])
+diccionario_ordenado = SortedDict({'a': 1, 'b': 2, 'c': 3})
+
+# Búsqueda de un elemento en un conjunto ordenado
+existe = 3 in conjunto_ordenado  # O(log n)
+# Es así porque el conjunto ordenado usa árboles balanceados internamente para realizar la búsqueda.
+# En C++, std::set::find también toma O(log n).
+
+# Inserción en un conjunto ordenado
+conjunto_ordenado.add(5)  # O(log n)
+# Python utiliza un árbol balanceado para mantener el orden, lo que hace que la inserción sea logarítmica.
+# En C++, std::set::insert también es O(log n).
+
+# Eliminación de un elemento en un conjunto ordenado
+conjunto_ordenado.remove(3)  # O(log n)
+# Es así porque la operación de eliminación también aprovecha la estructura de árbol balanceado.
+# En C++, std::set::erase también toma O(log n).
+
+# Búsqueda de un elemento en un diccionario ordenado
+valor = diccionario_ordenado['a']  # O(log n)
+# Los diccionarios ordenados implementan árboles balanceados para búsquedas rápidas.
+# En C++, std::map::find es O(log n).
+
+# Inserción en un diccionario ordenado
+diccionario_ordenado['d'] = 4  # O(log n)
+# La inserción en un diccionario ordenado usa árboles balanceados, manteniendo el orden.
+# En C++, std::map::insert también es O(log n).
+
+# Eliminación en un diccionario ordenado
+del diccionario_ordenado['a']  # O(log n)
+# La eliminación aprovecha la estructura de árbol balanceado para operar en tiempo logarítmico.
+# En C++, std::map::erase también es O(log n).
+
+# 3. Búsqueda binaria en listas ordenadas
+def busqueda_binaria(lista, objetivo):
+    inicio, fin = 0, len(lista) - 1
+    while inicio <= fin:
+        medio = (inicio + fin) // 2
+        if lista[medio] == objetivo:
+            return medio  # O(log n)
+        elif lista[medio] < objetivo:
+            inicio = medio + 1
+        else:
+            fin = medio - 1
+    return -1
+# Es así porque cada iteración reduce el rango de búsqueda a la mitad.
+# En C++, std::binary_search también toma O(log n).
+
+# 4. Operaciones en heap (montículo)
+import heapq
+heap = [1, 3, 5, 7]
+heapq.heapify(heap)  # Convierte una lista en un heap, O(n).
+
+# Inserción en un heap
+heapq.heappush(heap, 4)  # O(log n)
+# Es así porque Python utiliza un árbol binario implícito para organizar el heap.
+# En C++, std::priority_queue::push también es O(log n).
+
+# Eliminación del elemento más pequeño de un heap
+minimo = heapq.heappop(heap)  # O(log n)
+# Python reorganiza el heap después de eliminar el elemento mínimo, lo que toma tiempo logarítmico.
+# En C++, std::priority_queue::pop también es O(log n).
+
+# 5. División recursiva
+# Un ejemplo clásico es el cálculo de potencias usando división y conquista
+def potencia(base, exponente):
+    if exponente == 0:
+        return 1
+    mitad = potencia(base, exponente // 2)
+    return mitad * mitad if exponente % 2 == 0 else mitad * mitad * base
+# O(log n)
+# Es así porque el algoritmo divide el problema en subproblemas más pequeños, reduciendo el tamaño a la mitad en cada paso.
+# En C++, la exponenciación rápida implementada manualmente o con std::pow tiene la misma complejidad O(log n).
+
+
+
+# Operaciones de tiempo O(n log n) en Python -------------------------------------------------------------------------------------
+
+# 1. Ordenar una lista
+lista = [3, 1, 4, 1, 5, 9]
+lista.sort()  # O(n log n)
+# Es O(n log n) porque Python usa Timsort, que divide la lista en sublistas (O(log n)) 
+# y luego combina las sublistas ordenadas (O(n) por nivel).
+# En C++, std::sort también es O(n log n), utilizando introsort.
+
+# 2. Ordenar una copia de una lista
+lista_ordenada = sorted(lista)  # O(n log n)
+# Igual que lista.sort(), sorted() usa Timsort y toma O(n log n) en promedio.
+# En C++, std::sort también es O(n log n) para ordenar una copia de un contenedor.
+
+# 3. Construir un SortedSet
+from sortedcontainers import SortedSet
+conjunto_ordenado = SortedSet([3, 1, 4, 1, 5, 9])  # O(n log n)
+# Es O(n log n) porque cada elemento insertado en el SortedSet toma O(log n),
+# y hay n elementos en total.
+# En C++, construir un std::set desde un contenedor también toma O(n log n).
+
+# 4. Construir un SortedDict
+from sortedcontainers import SortedDict
+diccionario_ordenado = SortedDict({'a': 1, 'c': 3, 'b': 2})  # O(n log n)
+# Es O(n log n) porque cada clave-valor insertado en el SortedDict toma O(log n).
+# En C++, construir un std::map desde un contenedor también toma O(n log n).
+
+# 5. Heapify (construcción de un heap)
+import heapq
+heap = [3, 1, 4, 1, 5, 9]
+heapq.heapify(heap)  # O(n)
+# Es O(n) porque el proceso de reorganización de un heap completo está optimizado.
+# Sin embargo, las operaciones posteriores (como insertar n elementos en un heap) pueden tomar O(n log n).
+# En C++, std::make_heap para construir un heap también toma O(n).
+
+# Insertar n elementos en un heap
+for valor in lista:
+    heapq.heappush(heap, valor)  # O(n log n)
+# Es O(n log n) porque cada inserción toma O(log n), y hay n elementos.
+# En C++, insertar elementos en std::priority_queue toma un tiempo similar.
+
+# 6. Mezclar dos listas ordenadas
+import heapq
+lista1 = [1, 3, 5]
+lista2 = [2, 4, 6]
+lista_mezclada = list(heapq.merge(lista1, lista2))  # O(n log n), donde n es la suma de los tamaños de las listas.
+# Es O(n log n) porque heapq.merge combina listas usando un heap.
+# En C++, mezclar contenedores ordenados manualmente puede tomar O(n log n) dependiendo de la implementación.
+
+# 7. Algoritmos de ordenación por comparación
+# Implementar un merge sort
+def merge_sort(lista):
+    if len(lista) <= 1:
+        return lista
+    mid = len(lista) // 2
+    izquierda = merge_sort(lista[:mid])
+    derecha = merge_sort(lista[mid:])
+    return merge(izquierda, derecha)
+
+def merge(izquierda, derecha):
+    resultado = []
+    while izquierda and derecha:
+        if izquierda[0] < derecha[0]:
+            resultado.append(izquierda.pop(0))
+        else:
+            resultado.append(derecha.pop(0))
+    resultado.extend(izquierda or derecha)
+    return resultado
+
+ordenada = merge_sort([3, 1, 4, 1, 5, 9])  # O(n log n)
+# Es O(n log n) porque divide la lista en sublistas (O(log n)) y luego fusiona los resultados (O(n) por nivel).
+# En C++, std::stable_sort también toma O(n log n) y garantiza estabilidad.
+
+# 8. Operaciones en estructuras ordenadas con múltiples elementos
+# Insertar múltiples elementos en un SortedSet
+from sortedcontainers import SortedSet
+sorted_set = SortedSet()
+for valor in [3, 1, 4, 1, 5, 9]:
+    sorted_set.add(valor)  # O(n log n)
+# Es O(n log n) porque cada inserción toma O(log n), y hay n elementos.
+# En C++, insertar múltiples elementos en std::set también toma O(n log n).
+
+
