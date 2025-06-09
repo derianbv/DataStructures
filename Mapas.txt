@@ -1,4 +1,4 @@
-
+Son una función que pasa todos los datos por alguna otra funcion 
 
 # Lista original
 numeros = [1, 2, 3, 4, 5]
