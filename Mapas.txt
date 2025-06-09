@@ -1,0 +1,18 @@
+
+
+# Lista original
+numeros = [1, 2, 3, 4, 5]
+
+# Creamos una función que duplicará cada elemento
+def duplicar(x):
+    return x * 2
+
+# Usamos map para aplicar la función a cada elemento de la lista
+resultado = map(duplicar, numeros)
+
+# map devuelve un objeto iterable, por eso lo convertimos a lista
+resultado_lista = list(resultado)
+
+# Imprimimos resultados
+print("Lista original:", numeros)
+print("Lista duplicada:", resultado_lista)
